@@ -13,6 +13,9 @@ const pool = mysql.createPool({
     
      });
 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 app.get ("/api/items", (req, res) => {
     pool.query("SELECT item_name, item_price FROM item", (error, rows) =>{
         if (error){
@@ -30,6 +33,82 @@ app.get ("/api/customer", (req, res) => {
         res.json(rows);
     });
 });
+ app.post("/api/items", (req, res) => {
+     const item = {item_name,item_price} = req.body;
+
+     if (
+         !item_name ||
+         !item_price 
+        ) {
+         return res.status(400).json({error: "Invalid payload"});
+     }
+     pool.query(
+         "INSERT INTO item (item_name, item_price) VALUES (?, ?)",
+         [item_name, item_price],
+         (error, results) => {
+             if (error) {
+                 return res.status(500).json({ error});
+
+             }
+             res.json(results.insertId);
+         }
+     );
+    });
+
+app.put("/api/items/:item_id", (req, res) => {
+    const {item_name, item_price} = req.body;
+    
+    if (!item_name || item_price){
+        return res.status(400).json({error: "Invalid payload" });
+    }
+
+    pool.query(
+        "UPDATE item SET item_name = ?, item_price = ? WHERE item_id = ?",
+        [item_name, item_price, req.params.id],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({error});
+            }
+            res.json(results.changedRows);
+        }
+    );
+});
+
+app.delete("/api/items", (req, res) => {
+    pool.query(
+        "DELETE FROM item WHERE item_id = ?",
+        [req.params.id],
+        (error, results) => {
+            if (error){
+                return res.status(500).json({error});
+            }
+            res.json(results.affectedRows);
+        }
+    );
+});
+
+app.post("/api/customer", (req, res) => {
+    const   {customer_name, address, phone_number,} = req.body;
+
+    if (
+        !customer_name ||
+        !address ||
+        !phone_number 
+       ) {
+        return res.status(400).json({error: "Invalid payload"});
+    }
+    pool.query(
+        "INSERT INTO customers (customer_name, address, phone_number) VALUES (?, ?, ?)",
+        [customer_name, address, phone_number],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error});
+
+            }
+            res.json(results.insertId);
+        }
+    );
+   });
 
 app.listen(9000, () => console.log("App listening on port 9000"));
 
