@@ -37,6 +37,7 @@ app.get ("/api/customer", (req, res) => {
      const item = {item_name,item_price} = req.body;
 
      if (
+         
          !item_name ||
          !item_price 
         ) {

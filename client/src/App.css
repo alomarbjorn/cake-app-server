@@ -1,33 +1,130 @@
-.App {
+.itemls-header {
+  width: 100%;
+  margin: 0;
+  position: fixed;
+  z-index: 100;
+  background: #fff;
+}
+
+.itemls-container {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 6px;
+}
+
+@media (min-width: 720px) {
+  .itemls-container {
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+}
+
+.itemls-header .itemls-container {
+  padding: 0 12px;
+}
+
+.itemls-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 48px;
+}
+
+.itemls-nav .mvls-title {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.itemls-nav a {
+  font-size: 0.875rem;
+  margin-right: 10px;
+  color: #ffbb00;
+  text-decoration: none;
+}
+
+.itemls-main {
+  padding-top: 51px;
+}
+
+.itemls-item-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.itemls-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  background-color: rgb(236, 221, 12);
+  margin: 15px;
+  width: 280px;
+}
+
+.itemls-item .itemls-poster {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  background: url("./no-poster.jpg") 0px 0px no-repeat;
+}
+
+.itemls-item-body {
+  padding: 1rem 1.5rem;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.itemls-item .itemls-item_name {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.itemls-item .itemls-item_price-count {
+  font-size: 1rem;
+  color: #4a5568;
 }
 
-.App-link {
-  color: #61dafb;
+.itemls-item-footer {
+  padding: 15px 15px 30px;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.itemls-btn {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  background-color: #4299e1;
 }
+
+.itemls-btn.itemls-btn-cinemas {
+  padding: 0.5rem 3.5rem;
+  text-decoration: none;
+}
+.itemls-fullpage-text {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       min-height: calc(100vh - 51px);
+       width: 100%;
+   }
+  
+   .itemls-fullpage-text > p {
+       font-size: 1.5rem;
+       font-weight: 300;
+       line-height: 1.5;
+       color: #606f7b;
+       margin: 2rem;
+       text-align: center;
+   }
+  
+   @media (min-width: 720px) {
+       .itemls-fullpage-text > p {
+           font-size: 1.875rem;
+       }
+   }
