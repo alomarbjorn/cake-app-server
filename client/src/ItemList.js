@@ -54,7 +54,7 @@ class ItemList extends React.Component {
         <div className="item-container">
             <div className="itemls-item-list">
                 {ItemShowing.map(m => (
-                    <Item key={m.id} ItemShowing={m} />
+                    <Item key={m.item_id} ItemShowing={m} />
                 ))}
             </div>
         </div>

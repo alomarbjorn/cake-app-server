@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.get ("/api/items", (_req, res) => {
-    pool.query("SELECT item_name, item_price FROM item", (error, rows) =>{
+    pool.query("SELECT item_id, item_name, item_price FROM item", (error, rows) =>{
         if (error){
             return res.status(500).json({error});
         }

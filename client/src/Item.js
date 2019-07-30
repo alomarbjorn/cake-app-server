@@ -1,7 +1,7 @@
 import React from "react";
-
+import { Link } from "@reach/router";
 function Item ({ ItemShowing }) {
-    const { id, item_name, item_price } = ItemShowing;
+    const { item_id, item_name, item_price } = ItemShowing;
    
     return (
         <div className="itemls-item">
@@ -10,9 +10,9 @@ function Item ({ ItemShowing }) {
                 <p className="itemls-price">{item_price}</p>
             </div>
             <div className="itemls-item-footer">
-                <a href={`/item/${id}`} className="itemls-btn itemls-btn-price">
-                    CheckOut
-                </a>
+            <Link to={`/Cart/${item_id}`} className="itemls-btn itemls-btn-item">
+                     CheckOut
+            </Link>
             </div>
         </div>
     );

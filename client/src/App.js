@@ -1,6 +1,10 @@
 import React from "react";
+import { Router } from "@reach/router";
 import NavBar from "./NavBar";
 import ItemList from "./ItemList";
+import Cart from "./Cart";
+import Administrator from "./Administrator";
+import NotFound from "./NotFound";
 import "./App.css";
 
 
@@ -12,7 +16,12 @@ function App() {
               <NavBar />
           </header>
           <main className="itemls-main">
-              <ItemList />
+              <Router>
+                  <ItemList path="/" />
+                  <Cart path="/Cart" />
+                  <Administrator path="/Administrator" />
+                  <NotFound default />
+              </Router>
           </main>
       </div>
   );
