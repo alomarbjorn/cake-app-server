@@ -11,7 +11,7 @@ function Item ({ ItemShowing }) {
             </div>
             <div className="itemls-item-footer">
                 <a href={`/item/${id}`} className="itemls-btn itemls-btn-price">
-                    See Cart
+                    CheckOut
                 </a>
             </div>
         </div>
